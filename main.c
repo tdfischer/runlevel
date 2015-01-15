@@ -67,8 +67,8 @@ do_serve ()
 {
   GravitonQuickserver* server = graviton_quickserver_new();
 
-  graviton_quickserver_add_method (server, "noisebridge:net:runlevel", "set", cb_set_runlevel, NULL, NULL);
-  graviton_quickserver_add_method (server, "noisebridge:net:runlevel", "get", cb_get_runlevel, NULL, NULL);
+  graviton_quickserver_add_method (server, "net:noisebridge:runlevel", "set", cb_set_runlevel, NULL, NULL);
+  graviton_quickserver_add_method (server, "net:noisebridge:runlevel", "get", cb_get_runlevel, NULL, NULL);
 
   graviton_quickserver_run (server);
 }
@@ -83,12 +83,12 @@ int main(int argc, char** argv)
   GravitonCloud *cloud = graviton_cloud_new_default_cloud ();
 
   if (strcmp (argv[1], "set") == 0) {
-    graviton_cloud_foreach_service (cloud, "noisebridge:net:runlevel", cb_set, (void*)(long long)atoi(argv[2]));
+    graviton_cloud_foreach_service (cloud, "net:noisebridge:runlevel", cb_set, (void*)(long long)atoi(argv[2]));
   } else if (strcmp (argv[1], "get") == 0) {
-    graviton_cloud_foreach_service (cloud, "noisebridge:net:runlevel", cb_get, NULL);
+    graviton_cloud_foreach_service (cloud, "net:noisebridge:runlevel", cb_get, NULL);
   } else if (strcmp (argv[1], "watch") == 0) {
     //TODO
-    graviton_cloud_foreach_service (cloud, "noisebridge:net:runlevel", cb_watch, NULL);
+    graviton_cloud_foreach_service (cloud, "net:noisebridge:runlevel", cb_watch, NULL);
   }
 
   return 0;
