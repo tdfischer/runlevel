@@ -30,7 +30,7 @@ static void
 cb_changed (GravitonServiceInterface *iface, gchar* event_name, GVariant *val, gpointer user_data)
 {
   int i = g_variant_get_int64 (val);
-  g_print ("%d", i);
+  g_print ("%d\n", i);
   g_variant_unref (val);
 }
 
